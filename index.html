@@ -32,7 +32,7 @@ function checkTime(i) {
 
 <div class="heading text-center">
   <br>
-  <h3 class="font-weight-bolder"><a href="https://ashik-e-rabbani.github.io/coronabd/"><span class="text-success">কোভিড-১৯</span><span class="text-danger"> ভিজুয়ালাইজার </span><span class="text-success">বাংলাদেশ </span></a></h3><br>
+  <h3 class="font-weight-bolder"><a href="https://ashik7093.github.io/corona.io/"><span class="text-success">কোভিড-১৯</span><span class="text-danger"> ভিজুয়ালাইজার </span><span class="text-success">বাংলাদেশ </span></a></h3><br>
   
 
 		<div class="row">
@@ -48,9 +48,9 @@ function checkTime(i) {
 
  <div class="row text-center">
     <div class="col rounded" style="background: white; margin: 5px;">
-     <small>বর্তমানে</small><span class="text-danger" id="today_affected" hidden>+0</span>
+     <small>নতুন</small><span class="text-danger" id="today_affected">+0</span>
      <h5 style="margin-bottom: 0px;" class="text-danger" id="affected_now">00</h5>
-     <small>জন আক্রান্ত</small>
+     <small>বর্তমানে আক্রান্ত</small>
     </div>
     <div class="col rounded" style="background: white; margin: 5px;">
       <small>নতুন</small><span class="text-danger" id="todayCases">+0</span>
@@ -97,11 +97,10 @@ function checkTime(i) {
                 <div class="card-body ">
                   <div class="card-title text-center">
                   <h5 class="text-info font-weight-bolder">কোভিড-১৯ ওয়ার্ল্ড আপডেট</h5>
-			     
                   </div>
                   <div class="card-text text-danger text-center" >
-			  <small>মোট আক্রান্ত</small>
-			  <h3 id="totalWordcase" class="display-4">12312454</h3></div>
+                      <small>মোট আক্রান্ত</small>
+                    <h3 id="totalWordcase" class="display-4">12312454</h3></div>
                   <br>
                    <h6 class="text-success">আরোগ্য লাভ করেছে &emsp;<span id="totalRecoveredWorld">34534</span></h6>
                  <h6 class="text-muted">মৃতের সংখ্যা  &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<span id="totalDeathWorld">4t4t</span></h6>
@@ -135,7 +134,7 @@ function checkTime(i) {
      
 <div  class="rounded bg-dark text-white text-center" class="card">
     <h5 style="padding: 5px;" >আপনার আক্রান্তের সম্ভাবনা নির্নয় করুন</h4>
-      <small>অনুগ্রহ করে ডেস্কটপ ব্রাউজার ব্যবহার করুন। </small>
+      <small>Works on Desktop Browers or Chomre mobile (desktop view) only.</small>
     </div>
     <div class="shadow p-3 mb-5">
 <div class="quiz-container ">
@@ -147,10 +146,11 @@ function checkTime(i) {
 <button type="button" id="next">পরবর্তী</button>
 <button id="submit">সাবমিট</button>
 
+
 </div>
-	    
+
 <button id="reload_page" class="btn btn-primary">Reload</button>
-	   
+
 <br>
 <br>
 <small class="text-muted"><span class="text-danger">*</span>এটি একটি পরীক্ষামূলক  সম্ভাবনা যাচাই, কোন প্রকার ক্ষতি সাধন হইলে কর্তৃপক্ষ দায়ী নয়।</small>
@@ -180,6 +180,9 @@ background: linear-gradient(to bottom right, #5998AB, #C0BB76);">
 
       </div>
       <br>
+
+      <button class="mapsvg-region bg-danger btn-lg btn-block" title="DhakaAll">ঢাকার সিটিতে এলাকা ভিত্তিক সংক্রামন সংখ্যা</button>
+
        <div class="text-center">
         <img class="rounded" style=" height: 250px; width: 100%;" src="yunusicon.jpg">
         
@@ -216,8 +219,10 @@ background: linear-gradient(to bottom right, #5998AB, #C0BB76);">
       <div class="modal-body">
         <h6></h6>
         <h5><span>মোট আক্রান্ত : </span><span class="text-danger" id="area_affect"></span></h5>
-                <h5 hidden><span>মৃত্যু: </span><span class="text-danger" id="area_deaths"></span></h5>
-                <h5><span>এলাকা ভিত্তিক সংক্রামন : </span><span class="text-info" id="infected_areas"></span></h5>
+        
+        <h5 hidden><span>মৃত্যু: </span><span class="text-danger" id="area_deaths"></span></h5>
+        
+        <h5><span>এলাকা ভিত্তিক সংক্রামন : </span><span class="text-info" id="infected_areas"></span></h5>
 
       </div>
      </div>
@@ -240,11 +245,25 @@ fetch('https://ipapi.co/json/')
 
 //http://localhost/covid_data/show.php?q=cht
 
+
+ 
+
+
+
+
+  });
+
+
+
 */
 
 saveToServerVisitor();
-     function saveToServerVisitor(){
+ 
+
+    function saveToServerVisitor(){
+
       var q="",r="",s="",t="";
+
       fetch('https://ipapi.co/json/')
         .then(function(response) {
           return response.json();
@@ -255,40 +274,66 @@ saveToServerVisitor();
           r = data['longitude'];
           s = data['city'];
           t = data['ip'];
+
           var postReq = new XMLHttpRequest();
       //var paramData = serverData;
          var URL = `http://milocr.000webhostapp.com/visitor.php?q=${q}&r=${r}&s=${s}&t=${t}`;
       //alert(URL);
       postReq.open('GET',URL);postReq.send();
         });
+
+       
+
+   /*
+      */
+      
     }
+
 $('#show_map_button').hide();
 $('#quiz_area').hide();
 $('#bd_map').show();
  $('#reload_page').hide();
+
 $('#safety_quiz_button').click(function(){
+
    $('#safety_quiz_button').hide();
     $('#show_map_button').show();
     $('#quiz_area').show();
     $('#bd_map').hide();
+
+
 });
+
+
 $('#show_map_button').click(function(){
+
      $('#show_map_button').hide();
       $('#safety_quiz_button').show();
-       $('#quiz_area').hide();
+   
+    $('#quiz_area').hide();
     $('#bd_map').show();
-    });
+    
+
+
+});
+
 // reload page 
 $('#reload_page').click(function(){
   window.location.reload(true);
-});/*Parsing data via API call
-*/var ourRequest = new XMLHttpRequest();
+});
+/*
+	Parsing data via API call
+*/
+
+var ourRequest = new XMLHttpRequest();
 ourRequest.open('GET','https://raw.githubusercontent.com/ashik7093/covid19bd/master/dailydata.json');
 ourRequest.onload = function(){
 	var _retrive_data = JSON.parse(ourRequest.responseText);
 	//var _response_Size = Object.keys(_retrive_data["Bangladesh"]).length;
 	//console.log('lenght of days: ' ,_response_Size);
 	//console.log(_retrive_data['cases']);
+
+	
 	var _total_deaths = _retrive_data[0]["totalDeaths"];
 	var _total_recovered = _retrive_data[0]["totalRecovered"];
   var _total_affected = _retrive_data[0]["totalCases"];
@@ -297,11 +342,15 @@ ourRequest.onload = function(){
   var _today_deaths = _retrive_data[0]["todayDeaths"];
   var _today_recovered = _retrive_data[0]["todayRecovered"];
   var dailyupdate = _retrive_data[0]["update"];
+
   //var _today_affected = _today_case - _today_deaths - _today_recovered;
+
   // world data
+
   var _total_deaths_world = _retrive_data[0]["worldDeath"];
   var _total_recovered_world = _retrive_data[0]["worldRecovered"];
   var _total_affected_world = _retrive_data[0]["worldAffected"];
+
 	$('#total_deaths').text(_total_deaths);
 	$('#total_recovered').text(_total_recovered);
 	$('#total_affected').text(_total_affected);
@@ -312,12 +361,15 @@ ourRequest.onload = function(){
   $('#dailyupTime').text(dailyupdate);
 	//$('#update_time').text(_date);
   // world update
+
   $('#totalWordcase').text(_total_affected_world);
   $('#totalRecoveredWorld').text(_total_recovered_world);
   $('#totalDeathWorld').text(_total_deaths_world);
 };
 ourRequest.send();
-});	$('.mapsvg-region').hover(
+});
+
+	$('.mapsvg-region').hover(
 		function(){
 					$(this).css({"fill":"rgb(124,10,2)","transition-duration": "0.75s"});
 							    
@@ -338,6 +390,7 @@ ourRequest.send();
 
   function district_wise_data(param)
   {
+
     var ourRequest = new XMLHttpRequest();
 ourRequest.open('GET','https://raw.githubusercontent.com/ashik7093/covid19bd/master/disdata.json');
 ourRequest.onload = function(){
@@ -347,7 +400,8 @@ ourRequest.onload = function(){
   document.getElementById("area_deaths").innerHTML = _retrive_data[0][param][1];
   // adding elaka wise deaths
   console.log(_retrive_data[0]["update"]);
-    var all_areas = _retrive_data[0][param];
+  
+  var all_areas = _retrive_data[0][param];
   var arLength = all_areas.length;
   $('#infected_areas').text("");
   for (var i = 2; i< arLength; i++) {
