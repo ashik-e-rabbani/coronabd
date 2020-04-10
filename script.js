@@ -191,7 +191,7 @@ var serverData = "";
      
       var postReq = new XMLHttpRequest();
       //var paramData = `show.php?q=${serverData}`;
-      var URL = `http://milocr.000webhostapp.com/saveSubmit.php?ans=${q}&userloc=${r}&iploc=${s}`;
+      var URL = `https://milocr.000webhostapp.com/saveSubmit.php?ans=${q}&userloc=${r}&iploc=${s}`;
       
       postReq.open('GET',URL);
 
