@@ -17,7 +17,7 @@
   m = checkTime(m);
   s = checkTime(s);
   document.getElementById('txt').innerHTML =
-  h + ":" + m + ":" + s;
+   e2b(h) + ":" + e2b(m) + ":" + e2b(s);
   var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
@@ -234,29 +234,8 @@ background: linear-gradient(to bottom right, #5998AB, #C0BB76);">
 
 <script>
 
+
 $(document).ready(function(){
-
-/* Advance Update
-fetch('https://ipapi.co/json/')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    
-
-//http://localhost/covid_data/show.php?q=cht
-
-
- 
-
-
-
-
-  });
-
-
-
-*/
 
 saveToServerVisitor();
  
@@ -330,11 +309,6 @@ var ourRequest = new XMLHttpRequest();
 ourRequest.open('GET','https://raw.githubusercontent.com/ashik7093/covid19bd/master/dailydata.json');
 ourRequest.onload = function(){
 	var _retrive_data = JSON.parse(ourRequest.responseText);
-	//var _response_Size = Object.keys(_retrive_data["Bangladesh"]).length;
-	//console.log('lenght of days: ' ,_response_Size);
-	//console.log(_retrive_data['cases']);
-
-	
 	var _total_deaths = _retrive_data[0]["totalDeaths"];
 	var _total_recovered = _retrive_data[0]["totalRecovered"];
   var _total_affected = _retrive_data[0]["totalCases"];
@@ -348,9 +322,8 @@ ourRequest.onload = function(){
 
   // world data
 
-  var _total_deaths_world = _retrive_data[0]["worldDeath"];
-  var _total_recovered_world = _retrive_data[0]["worldRecovered"];
-  var _total_affected_world = _retrive_data[0]["worldAffected"];
+  
+  
 
 	$('#total_deaths').text(_total_deaths);
 	$('#total_recovered').text(_total_recovered);
@@ -363,11 +336,28 @@ ourRequest.onload = function(){
 	//$('#update_time').text(_date);
   // world update
 
-  $('#totalWordcase').text(_total_affected_world);
-  $('#totalRecoveredWorld').text(_total_recovered_world);
-  $('#totalDeathWorld').text(_total_deaths_world);
+
+ 
 };
 ourRequest.send();
+
+// make another world request
+var worldRequest = new XMLHttpRequest();
+worldRequest.open('GET','https://corona.lmao.ninja/all');
+worldRequest.onload = function(){
+  var _retrive_data = JSON.parse(worldRequest.responseText);
+  var _total_affected_world = _retrive_data["cases"];
+  var _total_deaths_world = _retrive_data["deaths"];
+  var _total_recovered_world = _retrive_data["recovered"];
+
+    $('#totalWordcase').text(e2b(_total_affected_world));
+    $('#totalRecoveredWorld').text(e2b(_total_recovered_world));
+    $('#totalDeathWorld').text(e2b(_total_deaths_world));
+};
+worldRequest.send();
+
+//end of worldData
+
 });
 
 	$('.mapsvg-region').hover(
@@ -388,6 +378,29 @@ ourRequest.send();
         show: true
     });
 	});
+
+   function e2b(input) {
+    
+       var numbers = {
+        0: "০",
+        1: "১",
+        2: "২",
+        3: "৩",
+        4: "৪",
+        5: "৫",
+        6: "৬",
+        7: "৭",
+        8: "৮",
+        9: "৯"
+    };
+
+    var amount_np = input.toString().replace(/[0123456789]/g, function(s) {
+                    return numbers[s];
+                });
+
+    return amount_np;
+    
+  }
 
   function district_wise_data(param)
   {
