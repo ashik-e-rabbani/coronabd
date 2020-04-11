@@ -35,7 +35,7 @@ function nextques()
 	if(selected_ans.value==questions[quesindex][4])
 		{ 
       score=score+eval(questions[quesindex][3]);}
-var serverData = serverData+selected_ans.value;
+      serverData = serverData+selected_ans.value;
       
       
 	selected_ans.checked=false;
