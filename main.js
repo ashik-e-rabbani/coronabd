@@ -20,8 +20,8 @@ function quit()
 function give_ques(quesindex) 
 {
 	ques.textContent=questions[quesindex][0];
-	opt1.textContent=questions[quesindex][1];
-	opt2.textContent=questions[quesindex][2];
+	opt1.textContent=" "+questions[quesindex][1];
+	opt2.textContent=" "+questions[quesindex][2];
 	
 	 return;// body...
 };
