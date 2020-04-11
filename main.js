@@ -48,22 +48,20 @@ function nextques()
 	     
           quiz.style.display='none';
           result.style.display='';
-          // calculation 
-
-
+         
         if (f < 100) {
           result.textContent =  "এইমুহূর্তে আপনার করোনা ভাইরাসের ঝুঁকি কম";
-          //resultsContainer.style.color = "green";
+          result.style.color = "green";
         }else if((f >= 100) && (f<200))
         {
                 result.textContent =  "এইমুহূর্তে আপনার কিছুটা করোনা ভাইরাসের ঝুঁকি রয়েছে। আতংকিত হবেন না।";
-               // resultsContainer.style.color = "red";
+               result.style.color = "red";
         }else if((f >= 200) && (f<300)){
-           result.textContent =  "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সম্ভাবনা রয়েছে";
-           //resultsContainer.style.color = "red";
+           result.textContent =  "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সম্ভাবনা রয়েছে ।";
+           result.style.color = "red";
         }else{
-          result.textContent = "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ারসমূহ সম্ভাবনা রয়েছে  অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন।";
-          //resultsContainer.style.color = "red";
+          result.textContent = "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ারসমূহ সম্ভাবনা রয়েছে, অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন।";
+          result.style.color = "red";
         }
 
           console.log(serverData);
