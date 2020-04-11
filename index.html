@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="shortcut icon" href="virus.png" />
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+
 <script type="text/javascript">function startTime() {
   var today = new Date();
   var h = today.getHours();
@@ -17,7 +17,7 @@
   m = checkTime(m);
   s = checkTime(s);
   document.getElementById('txt').innerHTML =
-   e2b(h) + ":" + e2b(m) + ":" + e2b(s);
+  e2b(h) + ":" + e2b(m) + ":" + e2b(s);
   var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
@@ -48,9 +48,9 @@ function checkTime(i) {
 
  <div class="row text-center">
     <div class="col rounded" style="background: white; margin: 5px;">
-     <small>বর্তমানে</small><span class="text-danger" id="today_affected" hidden></span>
+     <small>নতুন</small><span class="text-danger" id="today_affected">+0</span>
      <h5 style="margin-bottom: 0px;" class="text-danger" id="affected_now">00</h5>
-     <small>জন আক্রান্ত</small>
+     <small>বর্তমানে আক্রান্ত</small>
     </div>
     <div class="col rounded" style="background: white; margin: 5px;">
       <small>নতুন</small><span class="text-danger" id="todayCases">+0</span>
@@ -73,7 +73,7 @@ function checkTime(i) {
     </div>
   </div>
    <div class="card-footer text-white text-center">
-    <small>Source: WHO, update on - <span id="dailyupTime"></span> </small>
+    <small>IEDCR, Update on - <span id="dailyupTime"></span> </small>
   </div>
 </div>
            <!-- Daily Update Ends Here -->
@@ -100,10 +100,10 @@ function checkTime(i) {
                   </div>
                   <div class="card-text text-danger text-center" >
                       <small>মোট আক্রান্ত</small>
-                    <h3 id="totalWordcase" class="display-4">12312454</h3></div>
+                    <h3 id="totalWordcase" class="display-4">Net Error</h3></div>
                   <br>
-                   <h6 class="text-success">আরোগ্য লাভ করেছে &emsp;<span id="totalRecoveredWorld">34534</span></h6>
-                 <h6 class="text-muted">মৃতের সংখ্যা  &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<span id="totalDeathWorld">4t4t</span></h6>
+                   <h6 class="text-success">আরোগ্য লাভ করেছে &emsp;<span id="totalRecoveredWorld">Net Error</span></h6>
+                 <h6 class="text-muted">মৃতের সংখ্যা  &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<span id="totalDeathWorld">Net Error</span></h6>
                  
 
                 </div>
@@ -134,22 +134,20 @@ function checkTime(i) {
      
 <div  class="rounded bg-dark text-white text-center" class="card">
     <h5 style="padding: 5px;" >আপনার আক্রান্তের সম্ভাবনা নির্নয় করুন</h4>
-      <small>Works on Desktop Browers or Chomre mobile (desktop view) only.</small>
-    </div>
+      </div>
     <div class="shadow p-3 mb-5">
-<div class="quiz-container ">
-  <div id="quiz"></div>
-</div>
-  <div style="font-size: 24px;" id="results"></div>
-  <div id="operational_buttons">
-<button type="button" id="previous">পূর্ববর্তী</button>
-<button type="button" id="next">পরবর্তী</button>
-<button id="submit">সাবমিট</button>
 
-
-</div>
-
-<button id="reload_page" class="btn btn-primary">Reload</button>
+<h5 id="result" style="display:none; line-height: 40px;"></h5>
+<div id="quiz">
+        <h4 id="question" style="margin-bottom: 30px; line-height: 40px;" class="font-weight-bold"></h4>
+        <div style="margin-top: 20px; margin-bottom: 20px;">
+        <label class="option"><input type="radio" name="option" value="1" /><span id="option1"></span></label><br>
+        <label class="option"><input type="radio" name="option" value="2" /><span id="option2"></span></label><br>
+        </div>
+        <button style="margin-top: 30px;" class="btn-primary font-weight-bold" id="next" onclick="nextques();">পরবর্তী</button>
+      </div>
+<br>
+<button id="reload_page" class="btn btn-primary font-weight-bold">রিলোড</button>
 
 <br>
 <br>
@@ -229,7 +227,6 @@ background: linear-gradient(to bottom right, #5998AB, #C0BB76);">
      </div>
   </div>
 </div>
-
 
 
 <script>
