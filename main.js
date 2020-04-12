@@ -5,6 +5,9 @@ var opt2=document.getElementById("option2");
 var res=document.getElementById("result");
 var nextbutton= document.getElementById("next");
 var serverData = "";
+var positionInfo = "";
+var ipPositionInfo = "";
+var status ="woip";
 
 var tques=questions.length;
 var score=0;
@@ -48,36 +51,42 @@ function nextques()
 	     
           quiz.style.display='none';
           result.style.display='';
-         
+          // calculation 
+
+
         if (f < 100) {
           result.textContent =  "এইমুহূর্তে আপনার করোনা ভাইরাসের ঝুঁকি কম";
-          result.style.color = "green";
+          //resultsContainer.style.color = "green";
         }else if((f >= 100) && (f<200))
         {
                 result.textContent =  "এইমুহূর্তে আপনার কিছুটা করোনা ভাইরাসের ঝুঁকি রয়েছে। আতংকিত হবেন না।";
-               result.style.color = "red";
+               // resultsContainer.style.color = "red";
         }else if((f >= 200) && (f<300)){
-           result.textContent =  "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সম্ভাবনা রয়েছে ।";
-           result.style.color = "red";
+           result.textContent =  "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সম্ভাবনা রয়েছে";
+           //resultsContainer.style.color = "red";
         }else{
-          result.textContent = "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ারসমূহ সম্ভাবনা রয়েছে, অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন।";
-          result.style.color = "red";
+          result.textContent = "আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ারসমূহ সম্ভাবনা রয়েছে  অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন।";
+          //resultsContainer.style.color = "red";
         }
 
           console.log(serverData);
 
          $('#reload_page').show();
           
-             var storeThis = serverData;
+           parseData();  
+
+	     }
+
+        give_ques(quesindex);
+
+}
+
+function parseData()
+{
+  var storeThis = serverData;
       
       // get user specific location
-          var positionInfo = "";
-          var ipPositionInfo = "";
-
-
-
-
-// ip loc
+         
 
  fetch('https://ipapi.co/json/')
         .then(function(response) {
@@ -95,17 +104,24 @@ function nextques()
             navigator.geolocation.getCurrentPosition(function(position) {
                 var positionInfo = position.coords.latitude + ", " +position.coords.longitude;
                  console.log(positionInfo);
+                 status="wip";
+                 saveToServer(storeThis,positionInfo,ipPositionInfo);
+                 
                 
-                saveToServer(storeThis,positionInfo,ipPositionInfo);
+                
             });
         } else {
             alert("Sorry, You are not eligible");
-            saveToServer(storeThis,positionInfo,ipPositionInfo);
+            
         }
-	     }
-        give_ques(quesindex);
+        if (status=="woip") {
 
+        saveToServer(storeThis,positionInfo,ipPositionInfo);
+      }
 }
+
+
+
  function saveToServer(q,r,s){
 
      
